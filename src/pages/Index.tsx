@@ -17,16 +17,34 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Navigation */}
-      <nav className="border-b border-border/50 bg-background/80 backdrop-blur-xl sticky top-0 z-50">
-        <div className="container mx-auto px-6 py-5">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-gradient-primary" />
-              <h2 className="text-2xl font-bold text-foreground">IdeaProof</h2>
+      <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-6">
+        <div className="container mx-auto max-w-7xl">
+          <div className="bg-background/80 backdrop-blur-xl border border-border/50 rounded-full shadow-elevated px-6 py-3">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3 group cursor-pointer">
+                <div className="w-7 h-7 rounded-lg bg-gradient-primary transition-transform group-hover:scale-110" />
+                <h2 className="text-xl font-bold text-foreground tracking-tight">IdeaProof</h2>
+              </div>
+              
+              <div className="hidden md:flex items-center gap-8">
+                <a href="#how-it-works" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+                  How it Works
+                </a>
+                <a href="#examples" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+                  Examples
+                </a>
+                <a href="#pricing" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+                  Pricing
+                </a>
+              </div>
+
+              <Button 
+                size="sm" 
+                className="bg-primary text-primary-foreground hover:bg-primary/90 transition-all font-medium px-6 h-9 rounded-full"
+              >
+                Sign In
+              </Button>
             </div>
-            <Button variant="outline" size="sm" className="font-medium">
-              Sign In
-            </Button>
           </div>
         </div>
       </nav>
