@@ -8,44 +8,50 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Clean white background */
+    /* Crisp white with warm undertone */
     --background: 0 0% 100%;
-    --foreground: 220 13% 13%;
+    --foreground: 222 47% 11%;
 
-    /* Card surfaces */
+    /* Elevated surfaces */
     --card: 0 0% 100%;
-    --card-foreground: 220 13% 13%;
+    --card-foreground: 222 47% 11%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 13% 13%;
+    --popover-foreground: 222 47% 11%;
 
-    /* Professional blue primary */
-    --primary: 217 91% 60%;
+    /* Bold emerald primary */
+    --primary: 158 64% 52%;
     --primary-foreground: 0 0% 100%;
 
-    /* Subtle gray secondary */
-    --secondary: 220 14% 96%;
-    --secondary-foreground: 220 13% 13%;
+    /* Charcoal secondary */
+    --secondary: 222 47% 11%;
+    --secondary-foreground: 0 0% 100%;
 
-    /* Muted backgrounds and text */
-    --muted: 220 14% 96%;
-    --muted-foreground: 220 9% 46%;
+    /* Warm gray tones */
+    --muted: 210 20% 98%;
+    --muted-foreground: 215 14% 34%;
 
-    /* Accent colors */
-    --accent: 217 91% 60%;
+    /* Accent - vibrant coral */
+    --accent: 14 90% 63%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    /* Borders and inputs */
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 217 91% 60%;
+    /* Refined borders */
+    --border: 214 20% 88%;
+    --input: 214 20% 88%;
+    --ring: 158 64% 52%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
-    /* Sidebar (not used but keeping for compatibility) */
+    /* Custom design tokens */
+    --gradient-primary: linear-gradient(135deg, hsl(158 64% 52%), hsl(158 64% 42%));
+    --gradient-accent: linear-gradient(135deg, hsl(14 90% 63%), hsl(14 90% 53%));
+    --shadow-elevated: 0 4px 24px -2px hsl(222 47% 11% / 0.08);
+    --shadow-strong: 0 8px 32px -4px hsl(222 47% 11% / 0.12);
+
+    /* Sidebar */
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
     --sidebar-primary: 240 5.9% 10%;
@@ -54,6 +60,15 @@ All colors MUST be HSL.
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+  
+  /* Typography scale */
+  .text-display {
+    @apply text-6xl font-bold tracking-tight;
+  }
+  
+  .text-hero {
+    @apply text-5xl font-bold tracking-tight;
   }
 
   .dark {
