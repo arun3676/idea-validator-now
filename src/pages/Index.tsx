@@ -3,9 +3,19 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Card } from "@/components/ui/card";
 import { ArrowRight, Search, MessageSquare, BarChart3, CheckCircle2 } from "lucide-react";
+import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
 
 const Index = () => {
   const [idea, setIdea] = useState("");
+  
+  const heroSection = useIntersectionObserver({ threshold: 0.2 });
+  const howItWorksSection = useIntersectionObserver({ threshold: 0.1 });
+  const card1 = useIntersectionObserver({ threshold: 0.2 });
+  const card2 = useIntersectionObserver({ threshold: 0.2 });
+  const card3 = useIntersectionObserver({ threshold: 0.2 });
+  const demoSection = useIntersectionObserver({ threshold: 0.1 });
+  const socialProofSection = useIntersectionObserver({ threshold: 0.2 });
+  const ctaSection = useIntersectionObserver({ threshold: 0.2 });
 
   const handleValidate = () => {
     if (idea.trim()) {
@@ -54,7 +64,12 @@ const Index = () => {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,hsl(158,64%,52%,0.05)_0%,transparent_50%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,hsl(14,90%,63%,0.05)_0%,transparent_50%)]" />
         
-        <div className="container mx-auto max-w-5xl text-center relative space-y-16">
+        <div 
+          ref={heroSection.ref}
+          className={`container mx-auto max-w-5xl text-center relative space-y-16 transition-all duration-1000 ${
+            heroSection.isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}
+        >
           <div className="space-y-8">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium">
               <CheckCircle2 className="h-4 w-4" />
@@ -97,9 +112,14 @@ const Index = () => {
       </section>
 
       {/* How It Works */}
-      <section className="py-32 px-6 bg-muted/30">
+      <section id="how-it-works" className="py-32 px-6 bg-muted/30">
         <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-20 space-y-4">
+          <div 
+            ref={howItWorksSection.ref}
+            className={`text-center mb-20 space-y-4 transition-all duration-700 ${
+              howItWorksSection.isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
+          >
             <h2 className="text-4xl md:text-5xl font-bold text-foreground tracking-tight">
               How It Works
             </h2>
@@ -109,7 +129,13 @@ const Index = () => {
           </div>
           
           <div className="grid md:grid-cols-3 gap-10">
-            <Card className="p-10 border-border/50 bg-background shadow-elevated hover:shadow-strong transition-all duration-300 hover:-translate-y-1">
+            <Card 
+              ref={card1.ref}
+              className={`p-10 border-border/50 bg-background shadow-elevated hover:shadow-strong transition-all duration-700 hover:-translate-y-1 ${
+                card1.isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              }`}
+              style={{ transitionDelay: '100ms' }}
+            >
               <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-8">
                 <Search className="h-8 w-8 text-primary" />
               </div>
@@ -119,7 +145,13 @@ const Index = () => {
               </p>
             </Card>
 
-            <Card className="p-10 border-border/50 bg-background shadow-elevated hover:shadow-strong transition-all duration-300 hover:-translate-y-1">
+            <Card 
+              ref={card2.ref}
+              className={`p-10 border-border/50 bg-background shadow-elevated hover:shadow-strong transition-all duration-700 hover:-translate-y-1 ${
+                card2.isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              }`}
+              style={{ transitionDelay: '200ms' }}
+            >
               <div className="w-16 h-16 bg-accent/10 rounded-2xl flex items-center justify-center mb-8">
                 <MessageSquare className="h-8 w-8 text-accent" />
               </div>
@@ -129,8 +161,14 @@ const Index = () => {
               </p>
             </Card>
 
-            <Card className="p-10 border-border/50 bg-background shadow-elevated hover:shadow-strong transition-all duration-300 hover:-translate-y-1">
-              <div className="w-16 h-16 bg-secondary/10 rounded-2xl flex items-center justify-center mb-8">
+            <Card 
+              ref={card3.ref}
+              className={`p-10 border-border/50 bg-background shadow-elevated hover:shadow-strong transition-all duration-700 hover:-translate-y-1 ${
+                card3.isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              }`}
+              style={{ transitionDelay: '300ms' }}
+            >
+              <div className="w-16 h-16 bg-secondary/10 rounded-2xl flex items-center justify-center">
                 <BarChart3 className="h-8 w-8 text-secondary" />
               </div>
               <h3 className="text-2xl font-bold mb-4 text-foreground">Clear Verdict</h3>
@@ -143,9 +181,14 @@ const Index = () => {
       </section>
 
       {/* Live Demo */}
-      <section className="py-32 px-6">
+      <section id="examples" className="py-32 px-6">
         <div className="container mx-auto max-w-5xl">
-          <div className="text-center mb-20 space-y-4">
+          <div 
+            ref={demoSection.ref}
+            className={`text-center mb-20 space-y-4 transition-all duration-700 ${
+              demoSection.isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
+          >
             <h2 className="text-4xl md:text-5xl font-bold text-foreground tracking-tight">
               See a Real Validation
             </h2>
@@ -197,9 +240,14 @@ const Index = () => {
       </section>
 
       {/* Social Proof */}
-      <section className="py-32 px-6 bg-secondary text-secondary-foreground">
+      <section id="pricing" className="py-32 px-6 bg-secondary text-secondary-foreground">
         <div className="container mx-auto max-w-5xl">
-          <div className="grid md:grid-cols-2 gap-12 text-center">
+          <div 
+            ref={socialProofSection.ref}
+            className={`grid md:grid-cols-2 gap-12 text-center transition-all duration-700 ${
+              socialProofSection.isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
+          >
             <div className="p-12">
               <p className="text-7xl font-bold mb-4">147</p>
               <p className="text-xl opacity-90 font-normal">Ideas validated in 48 hours</p>
@@ -214,7 +262,12 @@ const Index = () => {
 
       {/* Final CTA */}
       <section className="py-32 px-6">
-        <div className="container mx-auto max-w-3xl text-center space-y-16">
+        <div 
+          ref={ctaSection.ref}
+          className={`container mx-auto max-w-3xl text-center space-y-16 transition-all duration-700 ${
+            ctaSection.isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}
+        >
           <div className="space-y-6">
             <h2 className="text-4xl md:text-5xl font-bold text-foreground tracking-tight">
               Ready to validate your idea?
